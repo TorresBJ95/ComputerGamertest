@@ -1,0 +1,5 @@
+<app-img [img]="product.imagenes[0].nombre"></app-img>
+<h2>{{ product.precio | currency:'ARS'}}</h2>
+<p>{{ product.nombre }}</p>
+<p>{{product.imagenes[0].orden}}</p>
+<button (click)="onAddToCart()">Agregar producto al carrito</button>

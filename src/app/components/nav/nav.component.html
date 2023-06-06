@@ -1,6 +1,6 @@
 <div class="mobile">
     <div>
-        <button>
+        <button (click)="toggleMenu()">
             <a href="">
                 <img src="./assets/svg/icon_menu.svg" alt="menu"/>
             </a>
@@ -12,6 +12,10 @@
             <img src="./assets/svg/icon_shopping_cart.svg" alt="logo"/>
         </a>
 
+    </div>
+    <div class="side-menu" [class.active]="activeMenu">
+        <button (click)="toggleMenu()">Cerrar</button>
+        <button mat-raised-button color="primary">Entrar</button>
     </div>
 </div>
 
@@ -27,10 +31,11 @@
             <div class="account">
                 <button mat-raised-button color="primary">Entrar</button>
             </div>
-            <div>
+            <div class="cart">
                 <a href="">
                     <img src="./assets/svg/icon_shopping_cart.svg" alt="logo" />
                 </a>
+                <span class="counter">{{counter}}</span>
             </div>
         </div>
     </div>

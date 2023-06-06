@@ -1,8 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {MatIconModule} from '@angular/material/icon';
 import {MatDividerModule} from '@angular/material/divider';
 import {MatButtonModule} from '@angular/material/button';
-
+import { StoreService } from 'src/app/services/store.service';
 @Component({
   selector: 'app-nav',
   templateUrl: './nav.component.html',
@@ -10,6 +10,21 @@ import {MatButtonModule} from '@angular/material/button';
   standalone: true,
   imports: [MatButtonModule, MatDividerModule, MatIconModule]
 })
-export class NavComponent {
+export class NavComponent implements OnInit {
+  activeMenu = false;
+  counter = 0;
+
+  constructor(private storeServices: StoreService){
+
+  }
+  ngOnInit(): void{
+    this.storeServices.myCart$.subscribe(products => {
+      this.counter = products.length;
+
+    })
+  }
+  toggleMenu(){
+    this.activeMenu = !this.activeMenu;
+  }
 
 }
