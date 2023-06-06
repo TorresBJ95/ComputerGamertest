@@ -1,5 +1,35 @@
-<app-img [img]="product.imagenes[0].nombre"></app-img>
-<h2>{{ product.precio | currency:'ARS'}}</h2>
-<p>{{ product.nombre }}</p>
-<p>{{product.imagenes[0].orden}}</p>
-<button (click)="onAddToCart()">Agregar producto al carrito</button>
+<mat-grid-list cols="5" rowHeight="100px">
+    <mat-grid-tile
+        *ngFor="let x of product.imagenes"
+        [colspan]="2"
+        [rowspan]="2"
+        [style.background]="'linear-gradient( 109.6deg,  rgba(15,2,2,1) 30.2%, rgba(11,61,71,100) 98.1%)'">
+      <img [src]='x.nombre' />
+      
+    </mat-grid-tile>
+    <mat-grid-tile
+        [colspan]="1"
+        [rowspan]="2"
+        [style.background]="'linear-gradient( 45.6deg,  rgba(15,2,2,1) 11.2%, rgba(11,61,71,100) 98.1%) '">
+      <h2>{{ product.precio | currency:'ARS'}}</h2>
+    </mat-grid-tile>
+    <mat-grid-tile
+        [colspan]="1"
+        [rowspan]="2"
+        [style.background]="'linear-gradient( 180.6deg, rgba(11,61,71,100) 10.1%, rgba(15,2,2,1) 71.2%)'">
+      <p>{{ product.nombre }}</p>
+    </mat-grid-tile>
+    <mat-grid-tile
+        [colspan]="1"
+        [rowspan]="2"
+        [style.background]="'linear-gradient( 45.6deg,  rgba(15,2,2,1) 11.2%, rgba(11,61,71,100) 98.1%)'">
+        <div class="image-container">
+            <button (click)="onAddToCart()">Agregar al carrito</button>
+        </div>
+      
+    </mat-grid-tile>
+
+  </mat-grid-list>
+  
+
+  

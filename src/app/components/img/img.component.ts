@@ -1,9 +1,13 @@
 import { Component, Output, EventEmitter, Input } from '@angular/core';
+import { ProductComponent } from '../product/product.component';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-img',
   templateUrl: './img.component.html',
-  styleUrls: ['./img.component.scss']
+  styleUrls: ['./img.component.scss'],
+  standalone: true,
+  imports: [ProductComponent, CommonModule]
 })
 export class ImgComponent {
   img: string = '';

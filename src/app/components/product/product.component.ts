@@ -1,11 +1,23 @@
 import { Component, Input, EventEmitter, Output, OnChanges } from '@angular/core';
 import { Product } from 'src/app/models/product.model';
+import { ProductsComponent } from '../products/products.component';
+import { ImgComponent } from '../img/img.component';
+import { CommonModule } from '@angular/common';
+import {MatGridListModule} from '@angular/material/grid-list';
+import { FormsModule } from '@angular/forms';
 @Component({
   selector: 'app-product',
   templateUrl: './product.component.html',
-  styleUrls: ['./product.component.scss']
+  styleUrls: ['./product.component.scss'],
+  standalone: true,
+  imports: [ProductsComponent, ImgComponent, CommonModule, MatGridListModule, FormsModule]
+  
 })
 export class ProductComponent implements OnChanges {
+  
+  
+  
+  
   linkDeProducto = 'https://compragamer.net/pga/imagenes_publicadas/compragamer_Imganen_general_';
   @Input() product: Product = {
     destacado: 0,
@@ -24,6 +36,7 @@ export class ProductComponent implements OnChanges {
 
   ngOnChanges(): void{
     this.product.imagenes[0].nombre = this.linkDeProducto + this.product.imagenes[0].nombre + '-med.jpg';
+    
 
   }
   

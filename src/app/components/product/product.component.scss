@@ -1,3 +1,36 @@
-p, h2{
+img {
+    max-width: 100%;
     margin: 0;
+    width: 200px;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(101, 101, 104, 0.63);
+    transition: transform 0.3s ease-in-out;
+    object-fit: cover;
+    filter: brightness(90%)
+    
+}
+p,h2{
+    font-size: 1.5vh;
+}
+.image-container{
+    width: 120px;
+    height: auto;
+    button{
+        font-size: 2vh;
+    }
+
+}
+@media screen and (min-width: 40em) and (max-width: 63.9em) {
+    p, h2{
+        font-size: 1vh;
+    }
+}
+
+/* Large and up */
+
+@media screen and (min-width: 64em) {
+    p, h2{
+        font-size: 1.8vh;
+    }
 }
