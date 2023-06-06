@@ -1,3 +1,4 @@
+// interface de productos recibidos por API
 export interface Product {
     destacado: number;
     nombre: string;

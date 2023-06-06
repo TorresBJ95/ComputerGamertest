@@ -1,7 +1,6 @@
 import { Component, Input, EventEmitter, Output, OnChanges } from '@angular/core';
 import { Product } from 'src/app/models/product.model';
 import { ProductsComponent } from '../products/products.component';
-import { ImgComponent } from '../img/img.component';
 import { CommonModule } from '@angular/common';
 import {MatGridListModule} from '@angular/material/grid-list';
 import { FormsModule } from '@angular/forms';
@@ -10,15 +9,15 @@ import { FormsModule } from '@angular/forms';
   templateUrl: './product.component.html',
   styleUrls: ['./product.component.scss'],
   standalone: true,
-  imports: [ProductsComponent, ImgComponent, CommonModule, MatGridListModule, FormsModule]
+  imports: [ProductsComponent, CommonModule, MatGridListModule, FormsModule]
   
 })
 export class ProductComponent implements OnChanges {
-  
-  
-  
+
   
   linkDeProducto = 'https://compragamer.net/pga/imagenes_publicadas/compragamer_Imganen_general_';
+
+  //recibe valores del componente padre
   @Input() product: Product = {
     destacado: 0,
     nombre: '',
@@ -33,13 +32,15 @@ export class ProductComponent implements OnChanges {
   };
   
   @Output() addedProduct = new EventEmitter<Product>();
-
+  //pre:
+  //post: modifica el valor del array de objetos del product, concatenando con otros datos de tipo string
   ngOnChanges(): void{
     this.product.imagenes[0].nombre = this.linkDeProducto + this.product.imagenes[0].nombre + '-med.jpg';
     
 
   }
-  
+  //pre:
+  //post: emite el valor de addedProduct al componente padre
   onAddToCart() {
     this.addedProduct.emit(this.product);
   }

@@ -20,10 +20,13 @@ export class ProductsComponent implements OnInit{
   total = 0;
   products: Product[] = [];
 
+  //pre: recibe los servicios de storeService y productService y los almacena en atributos propios
+  //post: almacena en myShoppingCart lo retornado en el metodo de storeService
   constructor(private storeService: StoreService, private productService: ProductsService){
     this.myShoppingCart = this.storeService.getShoppingCart();
   }
-
+  //pre:
+  // post: llama al metodo en productService y utiliza un observable
   ngOnInit(): void{
     this.productService.getAllProducts()
     .subscribe(data => {
@@ -32,7 +35,8 @@ export class ProductsComponent implements OnInit{
     })
 
   }
-  
+  //pre: recibe el tipo de dato product
+  //post: llama al metodo de storeService, y en el atributo total almacena lo retornado en el metodo getTotal
   onAddToShoppingCart(product: Product){
     this.storeService.addProduct(product);
     this.total = this.storeService.getTotal();
